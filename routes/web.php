@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\LessonController; // Ajoutez cette ligne pour importer le contrôleur
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/lesson/{lesson:slug}', [\App\Http\Controllers\LessonController::class,'view'])->name('lesson.view');
+Route::get('/author/{author}', [\App\Http\Controllers\AuthorController::class,'view'])->name('author.view');
